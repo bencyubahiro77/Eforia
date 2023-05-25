@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import pic1 from '../images/ logo.png'
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
@@ -12,9 +13,9 @@ function Header() {
     <header>
       <nav>
         <div className="logo">
-          <Link to="/">
-            <img src="eforia-logo.png" alt="Eforia logo" />
-            <h1>Eforia</h1>
+          <Link to="/home">
+          <img src={pic1} alt=" " />
+            <h1>EFORIA LTD</h1>
           </Link>
         </div>
         <div className={`menu-icon ${showMenu ? 'active' : ''}`} onClick={toggleMenu}>
