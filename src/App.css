@@ -625,6 +625,17 @@ footer {
   padding: 10px;
 }
 
+.menu-link {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.menu-link svg {
+  margin-right: 10px;
+}
+
+
 @media screen and (max-width: 1024px) {
   footer {
     flex-wrap: wrap;
@@ -702,7 +713,7 @@ input[type="text"], input[type="email"]{
   margin-bottom: 20px;
   border-radius: 5px;
   border: none;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+  border: 2px solid #ccc;
 }
 textarea{
   width: 100%;
@@ -710,8 +721,8 @@ textarea{
   margin-bottom: 20px;
   border-radius: 5px;
   border: none;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
   height: 12vh;
+  border: 2px solid #ccc;
 }
 
 input[type="submit"] {
@@ -1254,7 +1265,7 @@ h2 {
 label {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 10px;
+  
 }
 
 .signup-container
@@ -1362,7 +1373,7 @@ h4 a{
 .input-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 label {
@@ -1389,6 +1400,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   width: 50%;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 768px) {

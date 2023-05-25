@@ -17,11 +17,31 @@ function Footer() {
         <h3> example24@gmail.com</h3>
       </div>
       <div>
-        <ul className="menu1">
-          <li><Link to="#"><FontAwesomeIcon icon={faFacebook} />Facebook</Link></li>
-          <li><Link to="#"><FontAwesomeIcon icon={faTwitter} />Twitter</Link></li>
-          <li><Link to="#"><FontAwesomeIcon icon={faInstagram} />Instagram</Link></li>
-          <li><Link to=""><FontAwesomeIcon icon={faUser} />Admin</Link></li>
+      <ul className="menu1">
+          <li>
+            <Link to="#" className="menu-link">
+              <FontAwesomeIcon icon={faFacebook} />
+              <span>Facebook</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="#" className="menu-link">
+              <FontAwesomeIcon icon={faTwitter} />
+              <span>Twitter</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="#" className="menu-link">
+              <FontAwesomeIcon icon={faInstagram} />
+              <span>Instagram</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/login" className="menu-link">
+              <FontAwesomeIcon icon={faUser} />
+              <span>Admin</span>
+            </Link>
+          </li>
         </ul>
       </div>
     </footer>

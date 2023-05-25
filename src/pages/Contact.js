@@ -22,7 +22,7 @@ function Contact() {
           <input type="text" id="name" name="name" required />
 
           <label htmlFor="email">Email:</label>
-          <input type="text" id="name" name="name" required />
+          <input type="email" id="name" name="name" required />
 
           <label htmlFor="phone">Phone:</label>
           <input type="text" id="phone" name="phone" required />
