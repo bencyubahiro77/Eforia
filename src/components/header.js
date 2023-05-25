@@ -15,7 +15,7 @@ function Header() {
         <div className="logo">
           <Link to="/home">
           <img src={pic1} alt=" " />
-            <h1>EFORIA LTD</h1>
+            <h1>EFORIA</h1>
           </Link>
         </div>
         <div className={`menu-icon ${showMenu ? 'active' : ''}`} onClick={toggleMenu}>
