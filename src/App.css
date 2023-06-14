@@ -367,6 +367,12 @@ nav {
       padding: 0;
   }
 }
+@media screen and (max-width: 480px) {
+  .home h1 {
+    margin-top: 60%;
+    font-size: 30px;
+}
+}
 
 /* ----------------------------------------------services---------------------------------------------------- */
 .cooking_classes{

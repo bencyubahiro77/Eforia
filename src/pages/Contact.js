@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useRef, useState } from 'react';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 function Contact() {
   const form = useRef();
@@ -41,6 +42,31 @@ function Contact() {
 
     setErrors(errors);
     return isValid;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    const formData = new FormData(form.current);
+
+    setIsSending(true);
+
+    try {
+      // Send the form data to the backend
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/contact`,formData);
+
+      setIsSending(false);
+      form.current.reset();
+      showSuccessMessage();
+    } catch (error) {
+      console.error(error);
+      setIsSending(false);
+      showErrorMessage();
+    }
   };
 
   const isValidEmail = (email) => {
@@ -103,7 +129,7 @@ function Contact() {
     <div className="contact3">
       <h2>If you have any questions, Please let us know.</h2>
       <div className='contactor'>
-      <form ref={form} >
+      <form ref={form} onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" name="name" onChange={handleNameChange} required />
             {errors.name && <p className="error">{errors.name}</p>}
