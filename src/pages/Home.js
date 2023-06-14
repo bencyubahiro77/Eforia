@@ -29,7 +29,12 @@ const Home = () => {
     <div>
 
     <div className="home">
-      <h1>EFORIA Limited Rwanda <br />The Best Clearing Company </h1> 
+      <h1>EFORIA Limited Rwanda <br /> Clearing Company </h1> 
+      <p>We are flexible and dedicated Clearing Service  <br />
+      Partner.We work with you to design custom solutions <br />
+      that add value to your business.
+      </p>
+      <button><Link to="/contact">Reach Out</Link></button>
     </div>
 
     <div className="home1">
@@ -46,7 +51,7 @@ const Home = () => {
     </div>
 
     <div className="cooking_classes">
-      <h1>Our Services</h1>
+      <h1>What We Do</h1>
       <div className="work-list">
 
         <div className="work">
@@ -95,7 +100,7 @@ const Home = () => {
     </div>
 
     <div className="cooking_classes">
-        <h1>Blog</h1>
+        <h1>Latest Blog</h1>
         {isLoading ? (
           <div className="loading-circle"></div>
         ) : (

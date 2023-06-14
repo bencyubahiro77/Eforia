@@ -74,7 +74,7 @@ const About = () => {
     </div>
 
     <div className="team">
-        <h1>Our Team</h1>
+      <h1>Our Team</h1>
 
     <div className="team1">
     <img src={pic1} alt=" " />

@@ -208,12 +208,40 @@ nav {
   background-position: center;
 }
 .home h1{
-  color: whitesmoke;
-  font-size: 4em;
+  color: #fff;
+  font-size: 3.8em;
   /* margin-left: 10%; */
   padding-top: 12%;
   margin-top: 0px;
-  text-align: center;
+  margin-left: 10%;
+  font: bold;
+}
+.home p{
+  color:#fff;
+  margin-left: 10%;
+  font-size: 1em;
+  line-height: 1.5;
+  letter-spacing: 2px;
+  margin-bottom: 5%;
+}
+.home button{
+  width: 25vh;
+  height: 6vh;
+  margin-left: 10%;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+  background-color: green;
+  color: #fff;
+}
+.home button a{
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+}
+.home button:hover{
+  background-color: rgba(238, 96, 13);
 }
 .home h4{
   margin-left: 10%;
@@ -275,6 +303,8 @@ nav {
 .homeabout p{
   font-size: 1.1rem;
   color: #6b6363;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 
 /* For screens smaller than 768px (mobile) */
@@ -369,9 +399,14 @@ nav {
 }
 @media screen and (max-width: 480px) {
   .home h1 {
-    margin-top: 60%;
+    margin-top: 50%;
     font-size: 30px;
-}
+    margin-left: 8%;
+  }
+  .home p{
+    font-size: 0.8em;
+    letter-spacing: 1.2px;
+  }
 }
 
 /* ----------------------------------------------services---------------------------------------------------- */
@@ -444,6 +479,8 @@ nav {
   max-height: 4.5em;
   overflow: hidden;
   width: 100%;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 .card_footer{
   display:flex;
@@ -569,7 +606,7 @@ nav {
 .bbtn{
   width: 70%;
   height: 5vh;
-  background-color: rgb(2, 101, 2);
+  background-color: green;
   border: none;
   transition: background-color 0.3s ease-in-out;
   cursor: pointer;
@@ -586,7 +623,7 @@ nav {
 .bbtn2{
   width: 40vh;
   height: 5vh;
-  background-color: rgb(2, 101, 2);
+  background-color: green;
   transition: background-color 0.3s ease-in-out;
   border: none;
   cursor: pointer;
@@ -615,6 +652,11 @@ footer {
 
 .address {
   margin-left: 10%;
+}
+.address p{
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 
 .Website__rights {
@@ -871,6 +913,8 @@ input[type="submit"]:hover {
 }
 .head p{
   font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 .profe{
   display: flex;
@@ -896,6 +940,8 @@ input[type="submit"]:hover {
 }
 .profe-t p{
   padding-left: 30px;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 .profe-t h6 {
  padding-left: 30px;
@@ -918,17 +964,27 @@ input[type="submit"]:hover {
   padding-top: 20px;
 }
 .qlty1 h2{
-  font-size: 30px;
-  padding-bottom: 10%;
+  font-size: 40px;
+  padding-bottom: 5%;
+  text-align: center;
 }
 .qlty1 p{
   font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 .qlty2{
   padding-top: 12%;
 }
+.qlty2 p {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  margin-top: 25px
+}
 .qlty1 :nth-child(p){
   padding-bottom: 20px;
+  
 }
 .aboutbtn a{
   font-size: 20px;
@@ -946,9 +1002,9 @@ input[type="submit"]:hover {
   justify-content: center;
 }
 .team1 img{
-width: 30%;
-height: 50%;
-padding-right: 20px;
+  width: 30%;
+  height: 50%;
+  padding-right: 20px;
 }
 .team h1{
   text-align: center;
@@ -960,6 +1016,11 @@ padding-right: 20px;
 }
 .team1 h3{
   font-size: 30px;
+}
+.team1 p{
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -1243,6 +1304,8 @@ padding-right: 20px;
   font-size: 16px;
   line-height: 1.5;
   text-align: justify;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 
 .blog a {
@@ -1354,9 +1417,9 @@ padding-right: 20px;
   font-size: 18px;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.47;
-  letter-spacing: normal;
   color: #767676;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 @media only screen and (max-width: 480px) {
   .single-blog {

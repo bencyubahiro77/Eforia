@@ -39,7 +39,7 @@ function Footer() {
           <li>
             <Link to="/login" className="menu-link">
               <FontAwesomeIcon icon={faUser} />
-              <span>Admin</span>
+              <span>Login</span>
             </Link>
           </li>
         </ul>
