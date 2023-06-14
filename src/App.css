@@ -662,7 +662,6 @@ footer {
     margin: 0;
     margin-bottom: 20px;
   }
-  
 }
 
 @media screen and (max-width: 768px) {
@@ -715,8 +714,8 @@ footer {
 }
 
 form {
-  margin: 0 auto;
-  width: 50%;
+  margin:0 5% 0 5% ;
+  width: 40%;
 }
 label {
   display: block;
@@ -770,6 +769,28 @@ input[type="submit"]:hover {
   padding-bottom: 3%;
 }
 
+.contactor{
+  display: flex;
+}
+.map{
+  width: 80vh;
+  height: 60vh;
+}
+
+@media screen and (max-width: 991px) {
+  .contactor{
+    display: block;
+  }
+  .map{
+    width: 95%;
+    margin-left: 3%;
+    margin-top: 5%;
+  }
+  form{
+    width: 90%;
+  }
+}
+
 @media screen and (max-width: 768px) { /* for tablet view */
   .contimg {
   height: 30vh;
@@ -792,7 +813,15 @@ input[type="submit"]:hover {
   width: 50%;
   }
   .contact3 h2{
-      font-size: 20px;
+    font-size: 20px;
+  }
+  .contactor{
+    display: block;
+  }
+  .map{
+  width: 95%;
+  margin-left: 3%;
+  margin-top: 5%;
   }
   }
   
@@ -805,7 +834,7 @@ input[type="submit"]:hover {
   font-size: 2rem;
   }
   .contact3 h2{
-      margin-top: 18%;
+     margin-top: 18%;
   }
   .contact1 {
   width: 90%;
@@ -816,6 +845,14 @@ input[type="submit"]:hover {
   }
   input[type="submit"] {
   width: 70%;
+  }
+  .contactor{
+    display: grid;
+  }
+  .map{
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 5%;
   }
   }
 /* --------------------------------------------------About us----------------------------------- */

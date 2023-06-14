@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useRef, useState } from 'react';
 import Swal from 'sweetalert2';
 
@@ -101,7 +102,7 @@ function Contact() {
 
     <div className="contact3">
       <h2>If you have any questions, Please let us know.</h2>
-      <div>
+      <div className='contactor'>
       <form ref={form} >
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" name="name" onChange={handleNameChange} required />
@@ -119,7 +120,18 @@ function Contact() {
             {errors.message && <p className="error">{errors.message}</p>}
 
             <input type="submit" value={isSending ? 'Sending...' : 'Send'} disabled={isSending} />
-          </form>
+        </form>
+        <div>
+        <iframe 
+         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.4535681576094!2d30.081713009493548!3d-1.9727649382640942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca752267b8627%3A0xbdc6b5e80e429041!2sEFORIA%20LTD!5e0!3m2!1sen!2srw!4v1686761697711!5m2!1sen!2srw"  
+         style={{border:"0"}}
+         allowfullscreen="" 
+         loading="lazy" 
+         referrerpolicy="no-referrer-when-downgrade"
+         className='map'
+         >
+         </iframe>
+       </div>
       </div>
     </div>
     </body>
