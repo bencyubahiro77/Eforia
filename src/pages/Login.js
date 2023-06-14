@@ -1,32 +1,90 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import pic2 from '../images/gettyimages-1364964016.jpg'
+import React, { useState, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import pic1 from '../images/gettyimages-1364964016.jpg';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
-const Login = () => {
+function Contact() {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
+  const navigate = useNavigate();
+  const formRef = useRef(null);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible((prevVisible) => !prevVisible);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsRegistering(true);
+    const { email, password } = event.target.elements;
+
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/user/login`, {
+        email: email.value,
+        password: password.value,
+      });
+
+      if (response.status === 200) {
+        const { token } = response.data;
+        localStorage.setItem('token', token);
+        navigate('/');
+      }
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid credentials',
+        text: 'Please enter valid email and password',
+      }).then(() => {
+        formRef.current.reset(); // Reset the form
+      });
+    } finally {
+      setIsRegistering(false);
+    }
+  };
+
   return (
-    <div class="signup-container">
-    <div class="signup-image">
-      <img src={pic2} alt=" " />
-    </div>
-    <div class="signup-form">
-        <h2>Login</h2>
-        <div class="form-group">
-          <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter Your Email" />
-          </div>
-          <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter Your Password" />
-          </div>
-          <div class="input-group">
-            <button type="submit">Login</button>
-            <h4>Doesn't have an account?{' '}<Link to="/register" style={{ color: 'blue' }}>Signup</Link></h4>
+    <body>
+      <div className="Register">
+        <div className="Rinfo">
+          <h1>Welcome at EFORIA LTD</h1>
+          <form ref={formRef} onSubmit={handleSubmit}>
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email"  required />
+
+            <label htmlFor="Password">Password:</label>
+            <div className="password-input">
+              <input
+                type={passwordVisible ? 'text' : 'password'}
+                id="password"
+                name="password"
+                required
+              />
+              {passwordVisible ? (
+                <FiEyeOff className="eye-icon" onClick={togglePasswordVisibility} />
+              ) : (
+                <FiEye className="eye-icon" onClick={togglePasswordVisibility} />
+              )}
+            </div>
+
+            <input
+              type="submit"
+              value={isRegistering ? 'loging In...' : 'SIGN IN'}
+              disabled={isRegistering}
+            />
+          </form>
+          <div className="already">
+            <h4>
+              Don't have an account yet?<Link to="/register">Register</Link>
+            </h4>
           </div>
         </div>
+        <img src={pic1} alt=" " />
       </div>
-  </div>
-  )
+    </body>
+  );
 }
 
-export default Login
+export default Contact;

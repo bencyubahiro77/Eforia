@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import pic2 from '../images/image-1.jpg'
-import pic3 from '../images/gettyimages-1364964016.jpg'
+import pic3 from '../images/consulting-abstract-concept-vector-illustration_107173-24712.jpg'
 
 const Home = () => {
+
+  const [blogs, setBlogs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/blog`);
+        const sortedBlogs = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setBlogs(sortedBlogs.slice(0, 3));
+      } catch (error) {
+        console.error(error);
+      }
+      setIsLoading(false);
+    };
+
+    fetchBlogs();
+  }, []);
+
   return (
     <div>
 
     <div className="home">
-      {/* <h1>EFORIA Limited Rwanda <br />The Best Clearing Company in Rwanda</h1>  */}
+      <h1>EFORIA Limited Rwanda <br />The Best Clearing Company </h1> 
     </div>
 
     <div className="home1">
@@ -74,39 +95,28 @@ const Home = () => {
     </div>
 
     <div className="cooking_classes">
-      <h1>Blog</h1>
-      <div className="work-list">
-
-        <div className="work">
-          <img src={pic2}  alt='' />
-          <div className="layer">
-            <h2><Link to="/">Freight Forwarding</Link></h2>
-            <p>Short ribs fatback kevin spare ribs biltong pig bacon corned beef kielbasa porchetta</p>
+        <h1>Blog</h1>
+        {isLoading ? (
+          <div className="loading-circle"></div>
+        ) : (
+          <div className="work-list">
+            {blogs.map((blog) => (
+              <div className="work" key={blog._id}>
+                <img src={blog.image} alt="" />
+                <div className="layer">
+                  <h2>
+                    <Link to={`/blog/${blog._id}`}>{blog.title}</Link>
+                  </h2>
+                  <p>{blog.desc.slice(0, 100)}</p>
+                </div>
+                <button className="bbtn">
+                  <Link to={`/blog/${blog._id}`}>Read More</Link>
+                </button>
+              </div>
+            ))}
           </div>
-          <button className="bbtn"><Link to="/">Read More</Link></button>
-        </div>
-
-        <div className="work">
-          <img src={pic3}  alt=''/>
-          <div className="layer">
-            <h2><Link to="/">Clearing Taxes</Link></h2>
-            <p>Short ribs fatback kevin spare ribs biltong pig bacon corned beef kielbasa porchetta</p>
-          </div>
-          <button className="bbtn"><Link to="/">Read More</Link></button>
-        </div>
-
-        <div className="work">
-          <img src={pic2} alt='' />
-          <div className="layer">
-            <h2><Link to="/">French Dessert</Link></h2>
-            <p>Short ribs fatback kevin spare ribs biltong pig bacon corned beef kielbasa porchetta</p>
-          </div>
-          <button className="bbtn"><Link to="/">Read More</Link></button>
-        </div>
-
+        )}
       </div>
-      <button className="bbtn2"><Link to="./Blog">Show More</Link></button>
-    </div>
     </div>
   )
 }
