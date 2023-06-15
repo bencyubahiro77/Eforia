@@ -66,14 +66,16 @@ function AdminDashboard() {
                 <tr>
                   <th>Author</th>
                   <th>Title</th>
+                  <th>Category</th>
                   <th className="action">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {blogs.data.map((blog) => (
                   <tr key={blog._id}>
-                    <td data-label="Username">{blog.fullname}</td>
+                    <td data-label="fullname">{blog.fullname}</td>
                     <td data-label="Email">{blog.title}</td>
+                    <td data-label="Category">{blog.category}</td>
                     <td data-label="Action" className="action">
                       <button onClick={() => handleEditUser(blog)}>Edit</button>
                       <button className="delete" onClick={() => handleDeleteUser(blog)}>

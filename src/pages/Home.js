@@ -40,9 +40,10 @@ const Home = () => {
     <div className="home1">
       <h4>We're your business <br/> Clearing partners.</h4>
       <div className="homeabout">
-        <p> EFORIA ltd is a freight forwarding and clearing company here in Rwanda.<br/> 
-            We are in charge of giving a good service to clients that want to import.<br/>or export goods 
-            We help them by clearing taxes for them in the RRA and help<br/> them by advising  good transport ways to use.
+        <p> EFORIA Ltd is a Freight Forwarding and Clearing company here in Rwanda.<br/> 
+            We are in charge of giving a good service to clients that want to import or<br/> export goods.
+            We assist individuals by handling their tax matters with the <br/> 
+            RRA and providing guidance on efficient transportation options to utilize.
         </p>
         <div className="btns">
         <button className="main__btn"><Link to="/about">Get to Know Us</Link></button>
@@ -57,7 +58,7 @@ const Home = () => {
         <div className="work">
           <img src= {pic2} alt="Freight Forwarding" />
           <div className="layer">
-            <h2><Link to="/">Freight Forwarding</Link></h2>
+            <h2>Freight Forwarding</h2>
             <p>Short ribs fatback kevin spare ribs biltong pig bacon corned beef kielbasa porchetta</p>
           </div>
         </div>
@@ -65,7 +66,7 @@ const Home = () => {
         <div className="work">
           <img src={pic3} alt="Clearing Taxes" />
           <div className="layer">
-            <h2><Link to="/">Clearing Taxes</Link></h2>
+            <h2>Clearing Taxes</h2>
             <p>Short ribs fatback kevin spare ribs biltong pig bacon corned beef kielbasa porchetta</p>
           </div>
         </div>
@@ -73,7 +74,7 @@ const Home = () => {
         <div className="work">
           <img src={pic2} alt="French Dessert" />
           <div className="layer">
-            <h2><Link to="/">French Dessert</Link></h2>
+            <h2>Business Advisor</h2>
             <p>Short ribs fatback kevin spare ribs biltong pig bacon corned beef kielbasa porchetta</p>
           </div>
         </div>

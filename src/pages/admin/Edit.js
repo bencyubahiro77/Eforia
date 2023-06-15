@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 
+
 function EditUserForm({ blog }) {
   const [formData, setFormData] = useState({
     title: blog.title,
@@ -80,8 +81,7 @@ function EditUserForm({ blog }) {
   };
 
   return (
-    <div className="form-wrapper">
-      <h2>Edit Blog</h2>
+    <div className="create-blog-page" style={{marginTop:"-10%"}}>
       <form>
         <div className="form-group">
           <label htmlFor="title">Title:</label>
@@ -111,9 +111,9 @@ function EditUserForm({ blog }) {
         </div>
 
         <div className="form-group">
-          <label htmlFor="image">Cover Image:</label>
+          <label htmlFor="coverPhoto">Cover Photo:</label>
           <input
-            id="image"
+            id="coverPhoto"
             type="file"
             accept="image/*"
             onChange={handleImageChange}
@@ -121,7 +121,7 @@ function EditUserForm({ blog }) {
         </div>
 
         <div className="form-group">
-          <label htmlFor="desc">Content:</label>
+          <label htmlFor="content">Content:</label>
           <div className="blogEditor">
             <CKEditor
               editor={ClassicEditor}

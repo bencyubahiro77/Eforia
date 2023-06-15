@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import Swal from 'sweetalert2';
 import pic1 from '../images/ logo.png'
 
@@ -120,7 +122,7 @@ function Header() {
             <li>
               <div className="dropdown" ref={dropdownRef}>
                 <span className="dropdown-toggle" onClick={toggleDropdown}>
-                  Profile
+                <FontAwesomeIcon icon={faCaretDown} beat />
                 </span>
                 <ul className={`dropdown-menu ${isDropdownOpen ? 'active' : ''}`}>
                   <li>

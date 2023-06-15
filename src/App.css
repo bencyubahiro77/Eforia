@@ -1347,7 +1347,8 @@ input[type="submit"]:hover {
   }
 
   .blog{
-      height: 90%;
+     height: 75%;
+      width: 90%;
   }
 
   .blog img {

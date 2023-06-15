@@ -121,7 +121,7 @@ function Contact() {
           <h1>Contact Us</h1>
         </div>
       <div className="contact1">
-        <h3>Phone: 078888888</h3>
+        <h3>Phone: +(250) 781 486 001</h3>
         <h3>Email: example@gmail.com</h3>
       </div>
     </div>

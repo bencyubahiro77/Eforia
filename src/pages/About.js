@@ -125,58 +125,8 @@ const About = () => {
           estate developers <br />and investors with the various tax credits.
         </p>
       </div>
-    </div>
+     </div>
 
-    <div className="team1">
-    <img src={pic1} alt=" " />
-      <div>
-        <h3>Nsengiyumva Jean Bosco</h3>
-        <p>
-          The Firm's principal, Daniel T. Elder, graduated from the University of
-          Missouri - St. Louis  with a B.S. degree <br />in Business Administration.
-        </p>
-        <p>
-          Laura started her career in banking and real estate. She has 10 years
-          of experience in public accounting with an <br />emphasis in closely held
-          businesses and taxation. She has developed a niche in helping real
-          estate developers <br />and investors with the various tax credits.
-        </p>
-      </div>
-    </div>
-
-    <div className="team1">
-    <img src={pic1} alt=" " />
-      <div>
-        <h3>Nsengiyumva Jean Bosco</h3>
-        <p>
-          The Firm's principal, Daniel T. Elder, graduated from the University of
-          Missouri - St. Louis  with a B.S. degree <br />in Business Administration.
-        </p>
-        <p>
-          Laura started her career in banking and real estate. She has 10 years
-          of experience in public accounting with an <br />emphasis in closely held
-          businesses and taxation. She has developed a niche in helping real
-          estate developers <br />and investors with the various tax credits.
-        </p>
-      </div>
-    </div>
-
-    <div className="team1">
-    <img src={pic1} alt=" " />
-      <div>
-        <h3>Nsengiyumva Jean Bosco</h3>
-        <p>
-          The Firm's principal, Daniel T. Elder, graduated from the University of
-          Missouri - St. Louis  with a B.S. degree <br />in Business Administration.
-        </p>
-        <p>
-          Laura started her career in banking and real estate. She has 10 years
-          of experience in public accounting with an <br />emphasis in closely held
-          businesses and taxation. She has developed a niche in helping real
-          estate developers <br />and investors with the various tax credits.
-        </p>
-      </div>
-    </div>
     </div>  
     </div>    
 

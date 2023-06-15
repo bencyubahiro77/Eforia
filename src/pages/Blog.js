@@ -115,7 +115,6 @@ const Blog = () => {
                     Read more <FaArrowCircleRight className="icons" />
                   </Link>
                   <div className='blogfooterx'>
-                    <h4>{blog.fullname}</h4>
                     <h4>{formatDate(blog.createdAt)}</h4>
                   </div>
                 </div>

@@ -21,15 +21,26 @@ function Contact() {
     const { email, password } = event.target.elements;
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/user/login`, {
-        email: email.value,
-        password: password.value,
-      });
+      const token = localStorage.getItem('token');
+      if (token) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Already Logged In',
+          text: 'You are already logged in.',
+        }).then(() => {
+          navigate('/'); // Redirect to the previous page
+        });
+      } else {
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/user/login`, {
+          email: email.value,
+          password: password.value,
+        });
 
-      if (response.status === 200) {
-        const { token } = response.data;
-        localStorage.setItem('token', token);
-        navigate('/');
+        if (response.status === 200) {
+          const { token } = response.data;
+          localStorage.setItem('token', token);
+          navigate('/');
+        }
       }
     } catch (error) {
       console.error(error);
@@ -52,7 +63,7 @@ function Contact() {
           <h1>Welcome at EFORIA LTD</h1>
           <form ref={formRef} onSubmit={handleSubmit}>
             <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email"  required />
+            <input type="email" id="email" name="email" required />
 
             <label htmlFor="Password">Password:</label>
             <div className="password-input">
@@ -71,7 +82,7 @@ function Contact() {
 
             <input
               type="submit"
-              value={isRegistering ? 'loging In...' : 'SIGN IN'}
+              value={isRegistering ? 'Logging In...' : 'SIGN IN'}
               disabled={isRegistering}
             />
           </form>
