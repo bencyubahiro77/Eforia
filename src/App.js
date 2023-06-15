@@ -13,6 +13,7 @@ import Login from './pages/Login'
 import Register from './pages/Register';
 import ChangePassword from './pages/ChangePassword';
 import CreateBlogPage from './pages/CreateBlog';
+import Blogs from './pages/admin/Blogs';
 
 
 
@@ -28,7 +29,8 @@ const App = () => {
         <Route  element={<PrivateRoute />}>
                <Route path="/create" element={<CreateBlogPage />} />
                <Route path="/change-pass" element={<ChangePassword />} />
-          </Route>
+               <Route path="/dashboard/blog" element={<Blogs />} />
+        </Route>
 
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />

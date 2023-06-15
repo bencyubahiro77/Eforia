@@ -44,7 +44,7 @@ const CreateBlogPage = () => {
       formData.append('image', coverPhoto);
 
       // eslint-disable-next-line no-unused-vars
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}blog`, formData, {
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/blog`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -80,7 +80,7 @@ const CreateBlogPage = () => {
 
   return (
     <div className="create-blog-page">
-      <h1>Create a Blog</h1>
+      {/* <h1>Create a Blog</h1> */}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="title">Title:</label>

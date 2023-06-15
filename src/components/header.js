@@ -125,7 +125,7 @@ function Header() {
                 <ul className={`dropdown-menu ${isDropdownOpen ? 'active' : ''}`}>
                   <li>
                     <Link
-                      to="/links"
+                      to="/dashboard/blog"
                       className="link"
                       onClick={() => {
                       handleMenuItemClick();
