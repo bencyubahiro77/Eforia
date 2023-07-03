@@ -30,6 +30,22 @@ function Header() {
       setIsDropdownOpen(false);
     }
   };
+  const handleScroll = () => {
+    const nav = document.querySelector('.navbar');
+    const scrolled = window.pageYOffset > 0;
+    if (scrolled) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  };
+  
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -66,7 +82,7 @@ function Header() {
   };
   return (
     <header>
-      <nav>
+      <nav className='navbar'>
         <div className="logo">
           <Link to="/">
             <img src={pic1} alt=" " />

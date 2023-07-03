@@ -19,12 +19,10 @@ function Footer() {
     <>
       <footer>
         <div className="address">
-          <p>Our Cooking School features a long and proud history of more than 100 years<br />
-            Founded at the end of the XIXth century.
-          </p>
+         
           <h3> 23GM+VW4, KK 6 Ave, Kigali</h3>
           <h3>+(250) 781 486 001</h3>
-          <h3> example24@gmail.com</h3>
+          <h3> eforialtd1@gmail.com</h3>
         </div>
         <div>
           <ul className="menu1">

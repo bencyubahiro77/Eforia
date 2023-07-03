@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const SingleBlog = () => {
   const [blog, setBlog] = useState(null);
@@ -22,14 +23,14 @@ const SingleBlog = () => {
       } catch (error) {
         console.error(error);
       }
-      setIsLoading(false); 
+      setIsLoading(false);
     };
 
     fetchBlog();
   }, [id]);
 
   if (isLoading) {
-    return <div className="loading-circle"></div>; 
+    return <LoadingSpinner />;
   }
 
   if (!blog) {
@@ -37,15 +38,18 @@ const SingleBlog = () => {
   }
 
   return (
-    <body>
-      <div className="single-blog">
-        <img src={blog.image} alt=" " />
-        <div className='bdetails'>
+    <div className="single-blog-page">
+      <div className="single-blog-wrapper">
+        <div className="open-blog-sec">
+          <div className="contact-sec-1" style={{ backgroundImage: `url(${blog.image})`, height:'70vh'}}>
+            <h2>{blog.title}</h2>
+          </div>
+          <div className="open-blog-content">
+            <p>{blog.desc}</p>
+          </div>
         </div>
-        <h2>{blog.title}</h2>
-        <p>{blog.desc}</p>
       </div>
-    </body>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Header from './components/header';
 import Footer from './components/footer';
@@ -10,20 +10,18 @@ import SingleBlog from './pages/Openblog'
 import About from './pages/About';
 import Home from './pages/Home';
 import Login from './pages/Login'
-import Register from './pages/Register';
+// import Register from './pages/Register';
 import ChangePassword from './pages/ChangePassword';
 import CreateBlogPage from './pages/CreateBlog';
 import Blogs from './pages/admin/Blogs';
-
+import NotFound from './pages/NotFound';
 
 
 const App = () => {
-  const location = useLocation();
-
-  const shouldShowHeaderAndFooter = location.pathname !== '/register' && location.pathname !== '/login' ;
+  
   return (
     <>
-     {shouldShowHeaderAndFooter && <Header />}
+     <Header />
       <main>
         <Routes>
         <Route  element={<PrivateRoute />}>
@@ -38,7 +36,8 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/register" element={<Register />} /> */}
+        <Route path="*" element={<NotFound />} />
         
         </Routes>
       </main>

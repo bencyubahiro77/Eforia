@@ -1,5 +1,8 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useRef, useState } from 'react';
+import { FaMapMarkerAlt, FaEnvelope, } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone} from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
@@ -116,13 +119,45 @@ function Contact() {
 
   return (
     <body>
-      <div className="contimg">
-        <div className="contact2">
-          <h1>Contact Us</h1>
+
+    <div className='contact-sec-1'>
+      <h2>Contact</h2>
+      <p>WE WOULD LOVE TO HEAR FROM YOU</p>
+    </div>
+
+    <div className='home-sec-6'>
+      <div className='home-sec-6-a'>
+
+        <div className='home-sec-6-a-1'>
+          <div className='home-sec-6-2'>
+          <FontAwesomeIcon icon={faPhone} />
+          </div>
+          <div className='home-sec-6-3'>
+            <h4>Call Us</h4>
+            <h4>(250) 781 486 001</h4>
+          </div>
         </div>
-      <div className="contact1">
-        <h3>Phone: +(250) 781 486 001</h3>
-        <h3>Email: example@gmail.com</h3>
+
+        <div className='home-sec-6-a-1'>
+        <div className='home-sec-6-2'>
+          <FaMapMarkerAlt />
+          </div>
+          <div className='home-sec-6-3'>
+            <h4>ADDRESS</h4>
+            <h4> KK 6 Ave, Kigali</h4>
+          </div>
+        </div>
+
+        <div className='home-sec-6-a-1'>
+        <div className='home-sec-6-2'>
+          < FaEnvelope />
+          </div>
+          <div className='home-sec-6-3'>
+            <h4>EMAIL</h4>
+            <h4>eforialtd1@gmail.com</h4>
+          </div>
+        </div>
+
       </div>
     </div>
 

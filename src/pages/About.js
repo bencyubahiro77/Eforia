@@ -6,11 +6,11 @@ const About = () => {
   return (
     <body>
 
-    <div className="contimg">
-      <div className="contact2">
-        <h1>About Us</h1>
+      <div className="contact-sec-1">
+        <h2>About us</h2>
+        <p>WE WOULD LIKE YOU TO KNOW MORE ABOUT US</p>
       </div>
-    </div>
+  
 
     <div className="about">
         <div className="head">
@@ -44,7 +44,7 @@ const About = () => {
       </div>
     </div>  
 
-    <div className="quality">
+    {/* <div className="quality">
       <div className="qlty1">
         <h2>Quality</h2>
         <p>An accounting firm is known for the quality of its service.<br />
@@ -71,7 +71,7 @@ const About = () => {
           contact us anytime.
         </p>
       </div>
-    </div>
+    </div> */}
 
     <div className="team">
       <h1>Our Team</h1>

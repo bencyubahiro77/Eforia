@@ -1,37 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import pic2 from '../images/image-1.jpg'
 import pic3 from '../images/consulting-abstract-concept-vector-illustration_107173-24712.jpg'
 
 const Home = () => {
 
-  const [blogs, setBlogs] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [blogs, setBlogs] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      setIsLoading(true);
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/blog`);
-        const sortedBlogs = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        setBlogs(sortedBlogs.slice(0, 3));
-      } catch (error) {
-        console.error(error);
-      }
-      setIsLoading(false);
-    };
+  // useEffect(() => {
+  //   const fetchBlogs = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/blog`);
+  //       const sortedBlogs = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  //       setBlogs(sortedBlogs.slice(0, 3));
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //     setIsLoading(false);
+  //   };
 
-    fetchBlogs();
-  }, []);
+  //   fetchBlogs();
+  // }, []);
 
   return (
     <div>
 
     <div className="home">
       <h1>EFORIA Limited Rwanda <br /> Clearing Company </h1> 
-      <p>We are flexible and dedicated Clearing Service  <br />
-      Partner.We work with you to design custom solutions <br />
+      <p>We are flexible and dedicated Clearing Service 
+      Partner. <br />We work with you to design custom solutions <br />
       that add value to your business.
       </p>
       <button><Link to="/contact">Reach Out</Link></button>
@@ -40,9 +39,9 @@ const Home = () => {
     <div className="home1">
       <h4>We're your business <br/> Clearing partners.</h4>
       <div className="homeabout">
-        <p> EFORIA Ltd is a Freight Forwarding and Clearing company here in Rwanda.<br/> 
-            We are in charge of giving a good service to clients that want to import or<br/> export goods.
-            We assist individuals by handling their tax matters with the <br/> 
+        <p> EFORIA Ltd is a Freight Forwarding and Clearing company here in Rwanda.
+            We are in charge of giving a good service to clients that want to import or export goods.
+            We assist individuals by handling their tax matters with the 
             RRA and providing guidance on efficient transportation options to utilize.
         </p>
         <div className="btns">
@@ -81,16 +80,16 @@ const Home = () => {
       </div>
     </div>
 
-    <div className="home2">
+    {/* <div className="home2">
       <img src={pic3} alt="containers" />
       <div className="homeabout">
         <h1>Local Professionals</h1>
         <p>
           We offer free consultations to discuss your questions
-          <br /> and understand the scope of your needs. This enables
-          <br /> you to meet us personally to determine if we are a good
-          <br /> match. Conveniently located in Gikondo, contact us and
-          <br /> set up your consultation today.
+          and understand the scope of your needs. This enables
+          you to meet us personally to determine if we are a good
+          match. Conveniently located in Gikondo, contact us and
+          set up your consultation today.
         </p>
         <div className="btns">
           <button className="main__btn">
@@ -98,9 +97,9 @@ const Home = () => {
           </button>
         </div>
       </div>
-    </div>
+    </div> */}
 
-    <div className="cooking_classes">
+    {/* <div className="cooking_classes">
         <h1>Latest Blog</h1>
         {isLoading ? (
           <div className="loading-circle"></div>
@@ -122,7 +121,7 @@ const Home = () => {
             ))}
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   )
 }

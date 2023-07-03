@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import pic1 from '../images/gettyimages-1364964016.jpg';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import axios from 'axios';
@@ -87,9 +87,9 @@ function Contact() {
             />
           </form>
           <div className="already">
-            <h4>
+            {/* <h4>
               Don't have an account yet?<Link to="/register">Register</Link>
-            </h4>
+            </h4> */}
           </div>
         </div>
         <img src={pic1} alt=" " />

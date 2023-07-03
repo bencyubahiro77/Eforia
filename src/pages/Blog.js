@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowCircleRight } from 'react-icons/fa';
 import axios from 'axios';
 import Pagination from '../components/pagination';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      setIsLoading(true); 
+      setIsLoading(true);
 
       try {
         const url = selectedCategory
@@ -21,12 +21,12 @@ const Blog = () => {
           : `${process.env.REACT_APP_BASE_URL}/blog`;
         const response = await axios.get(url);
         setBlogs(response.data);
-        setTotalPages(Math.ceil(response.data.length / 3));
+        setTotalPages(Math.ceil(response.data.length / 6));
       } catch (error) {
         console.error(error);
       }
 
-      setIsLoading(false); 
+      setIsLoading(false);
     };
 
     fetchBlogs();
@@ -40,10 +40,11 @@ const Blog = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
 
-  const startIndex = (currentPage - 1) * 3;
-  const endIndex = startIndex + 3;
+  const startIndex = (currentPage - 1) * 6;
+  const endIndex = startIndex + 6;
   const currentBlogs = blogs.slice(startIndex, endIndex);
 
+  // eslint-disable-next-line no-unused-vars
   const handleCategoryFilter = (category) => {
     setSelectedCategory(category);
     setCurrentPage(1);
@@ -53,83 +54,47 @@ const Blog = () => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-GB', {
       day: '2-digit',
-      month: 'short',
+      month: 'long',
       year: 'numeric',
     });
   };
 
   return (
-    <body>
-      <div className="contimg">
-        <div className="contact2">
-          <h1>Blog</h1>
-        </div>
+    <div className="blog-sec">
+      <div className="contact-sec-1">
+        <h2>Blog</h2>
+        <p>WE WOULD LOVE TO SHARE OUR BLOGS</p>
       </div>
 
-      <div className='allblogs'>
-        <div className='blogside'>
-            <div className='btncategory'>
-              <h4
-                className={selectedCategory === '' ? 'active' : ''}
-                onClick={() => handleCategoryFilter('')}
-              >
-                All
-              </h4>
-              <h4
-                className={selectedCategory === 'technology' ? 'active' : ''}
-                onClick={() => handleCategoryFilter('technology')}
-              >
-                Technology
-              </h4>
-              <h4
-                className={selectedCategory === 'coding' ? 'active' : ''}
-                onClick={() => handleCategoryFilter('coding')}
-              >
-                Coding
-              </h4>
-              <h4
-                className={selectedCategory === 'sport' ? 'active' : ''}
-                onClick={() => handleCategoryFilter('sport')}
-              >
-                Sports
-              </h4>
-              <h4
-                className={selectedCategory === 'others' ? 'active' : ''}
-                onClick={() => handleCategoryFilter('others')}
-              >
-                Others
-              </h4>
-            </div>
-        </div>
-        <div className="blog-container">
-          {isLoading ? ( 
-            <div className="loading-circle"></div>
-          ) : (
-            currentBlogs.map((blog) => (
-              <div className="blog" key={blog._id}>
-                <img src={blog.image} alt=" " />
-                <h2>{blog.title}</h2>
-                <p>{blog.desc.slice(0, 200)}...</p>
-                <div className='blogfooter'>
-                  <Link to={`/blog/${blog._id}`}>
-                    Read more <FaArrowCircleRight className="icons" />
-                  </Link>
-                  <div className='blogfooterx'>
-                    <h4>{formatDate(blog.createdAt)}</h4>
-                  </div>
-                </div>
+      <h2 className="blog-sec-1">EFORIA Limited | Blog</h2>
+
+      <div className="blog-sec-2">
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          currentBlogs.map((blog) => (
+            <div className="one-blog-container" key={blog._id}>
+              <div className="image-container">
+                <img src={blog.image} alt="" />
               </div>
-            ))
-          )}
-        </div>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onNextPage={handleNextPage}
-          onPrevPage={handlePrevPage}
-        />
+              <h2>{blog.title}</h2>
+              <p>{formatDate(blog.createdAt)}</p>
+              <p className="excerpt">{blog.desc}</p>
+              <Link to={`/blog/${blog._id}`} className="read-more">
+                Read more
+              </Link>
+            </div>
+          ))
+        )}
       </div>
-    </body>
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onNextPage={handleNextPage}
+        onPrevPage={handlePrevPage}
+      />
+    </div>
   );
 };
 
