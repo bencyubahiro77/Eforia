@@ -59,6 +59,22 @@ const Blog = () => {
     });
   };
 
+  const createMarkup = (content) => {
+    return { __html: content };
+  };
+
+  const extractFirstParagraph = (content) => {
+    const strippedContent = content.replace(/<[^>]+>/g, '');
+    const paragraphs = strippedContent.split('\n');
+    const firstParagraph = paragraphs.find((paragraph) => paragraph.trim() !== '');
+
+    if (firstParagraph) {
+      return firstParagraph.trim().substring(0, 220) + '...';
+    } else {
+      return '';
+    }
+  };
+
   return (
     <div className="blog-sec">
       <div className="contact-sec-1">
@@ -79,7 +95,13 @@ const Blog = () => {
               </div>
               <h2>{blog.title}</h2>
               <p>{formatDate(blog.createdAt)}</p>
-              <p className="excerpt">{blog.desc}</p>
+              <p className="excerpt">
+                {blog.desc.includes('<img') ? (
+                  <span dangerouslySetInnerHTML={createMarkup(extractFirstParagraph(blog.desc))}></span>
+                ) : (
+                  extractFirstParagraph(blog.desc)
+                )}
+              </p>
               <Link to={`/blog/${blog._id}`} className="read-more">
                 Read more
               </Link>

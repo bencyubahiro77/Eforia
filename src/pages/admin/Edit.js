@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 function EditUserForm({ blog }) {
   const [formData, setFormData] = useState({
@@ -12,7 +11,6 @@ function EditUserForm({ blog }) {
     category: blog.category,
     image: null,
   });
-
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -27,6 +25,13 @@ function EditUserForm({ blog }) {
     setFormData((prevFormData) => ({
       ...prevFormData,
       image: file,
+    }));
+  };
+
+  const handleContentChange = (value) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      desc: value,
     }));
   };
 
@@ -76,12 +81,11 @@ function EditUserForm({ blog }) {
         icon: 'error',
         confirmButtonText: 'OK',
       });
-    } finally {
     }
   };
 
   return (
-    <div className="create-blog-page" style={{marginTop:"-10%"}}>
+    <div className="create-blog-page" style={{ marginTop: '-10%' }}>
       <form>
         <div className="form-group">
           <label htmlFor="title">Title:</label>
@@ -123,15 +127,24 @@ function EditUserForm({ blog }) {
         <div className="form-group">
           <label htmlFor="content">Content:</label>
           <div className="blogEditor">
-            <CKEditor
-              editor={ClassicEditor}
-              data={formData.desc}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                setFormData((prevFormData) => ({
-                  ...prevFormData,
-                  desc: data,
-                }));
+            <ReactQuill
+              value={formData.desc}
+              onChange={handleContentChange}
+              modules={{
+                toolbar: {
+                  container: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                    [
+                      { list: 'ordered' },
+                      { list: 'bullet' },
+                      { indent: '-1' },
+                      { indent: '+1' },
+                    ],
+                    ['link', 'image'],
+                    ['clean'],
+                  ],
+                },
               }}
             />
           </div>
@@ -139,7 +152,7 @@ function EditUserForm({ blog }) {
 
         <div className="form-actions">
           <button type="submit" onClick={handleSubmit}>
-           Update
+            Update
           </button>
         </div>
       </form>

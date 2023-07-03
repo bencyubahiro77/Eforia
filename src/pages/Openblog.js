@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
+import axios from 'axios';
 
 const SingleBlog = () => {
   const [blog, setBlog] = useState(null);
@@ -37,15 +37,22 @@ const SingleBlog = () => {
     return <div>Loading...</div>;
   }
 
+  const createMarkup = () => {
+    return { __html: blog.desc };
+  };
+
   return (
     <div className="single-blog-page">
       <div className="single-blog-wrapper">
         <div className="open-blog-sec">
-          <div className="contact-sec-1" style={{ backgroundImage: `url(${blog.image})`, height:'70vh'}}>
-            <h2>{blog.title}</h2>
+          <div
+            className="contact-sec-1"
+            style={{ backgroundImage: `url(${blog.image})`, height: '70vh', marginBottom:'5%' }}
+          >
+            <h2 style={{color:'white'}}>{blog.title}</h2>
           </div>
           <div className="open-blog-content">
-            <p>{blog.desc}</p>
+            <p dangerouslySetInnerHTML={createMarkup()}></p>
           </div>
         </div>
       </div>

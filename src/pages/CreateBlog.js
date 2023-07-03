@@ -1,101 +1,113 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const CreateBlogPage = () => {
-  const navigate = useNavigate();
-  const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('');
-  const [coverPhoto, setCoverPhoto] = useState(null);
-  const [content, setContent] = useState('');
-  const [publishing, setPublishing] = useState(false);
+  const [formData, setFormData] = useState({
+    title: '',
+    desc: '',
+    category: '',
+    image: null,
+  });
 
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      image: file,
+    }));
   };
 
-  const handleCoverPhotoChange = (event) => {
-    setCoverPhoto(event.target.files[0]);
-  };
-
-  const handleContentChange = (event, editor) => {
-    const data = editor.getData();
-    setContent(data);
+  const handleContentChange = (value) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      desc: value,
+    }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
-      setPublishing(true);
-
       const token = localStorage.getItem('token');
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('desc', content);
-      formData.append('category', category);
-      formData.append('image', coverPhoto);
 
-      // eslint-disable-next-line no-unused-vars
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/blog`, formData, {
+      const newBlog = new FormData();
+      newBlog.append('title', formData.title);
+      newBlog.append('desc', formData.desc);
+      newBlog.append('category', formData.category);
+      if (formData.image) {
+        newBlog.append('image', formData.image);
+      }
+
+      Swal.fire({
+        title: 'Creating blog...',
+        icon: 'info',
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      });
+
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/blog`, newBlog, {
         headers: {
           Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
         },
       });
 
       Swal.fire({
+        title: 'Blog created',
         icon: 'success',
-        title: 'Blog Created Successfully',
-        showConfirmButton: true,
-        timer: 1500,
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
       });
 
-      // Reset form values
-      setTitle('');
-      setCategory('');
-      setCoverPhoto(null);
-      setContent('');
-
-      // Navigate to /blog
-      navigate('/blog');
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
     } catch (error) {
-      console.error('Error creating blog:', error);
-
       Swal.fire({
+        title: 'Error',
+        text: 'Error creating blog',
         icon: 'error',
-        title: 'Error creating blog',
-        showConfirmButton: true,
+        confirmButtonText: 'OK',
       });
-    } finally {
-      setPublishing(false);
     }
   };
 
   return (
-    <div className="create-blog-page">
-      {/* <h1>Create a Blog</h1> */}
-      <form onSubmit={handleSubmit}>
+    <div className="create-blog-page" style={{ marginTop: '5%' }}>
+      <form>
         <div className="form-group">
           <label htmlFor="title">Title:</label>
           <input
             id="title"
             type="text"
-            value={title}
-            onChange={handleTitleChange}
-            placeholder="Enter the title of your blog"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
             required
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="category">Category:</label>
-          <select id="category" value={category} onChange={handleCategoryChange} required>
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            id="category"
+            required
+          >
             <option value="">Select a category</option>
             <option value="technology">Technology</option>
             <option value="coding">Coding</option>
@@ -103,24 +115,50 @@ const CreateBlogPage = () => {
             <option value="others">Other</option>
           </select>
         </div>
+
         <div className="form-group">
           <label htmlFor="coverPhoto">Cover Photo:</label>
-          <input id="coverPhoto" type="file" onChange={handleCoverPhotoChange} required />
+          <input
+            id="coverPhoto"
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            required
+          />
         </div>
+
         <div className="form-group">
           <label htmlFor="content">Content:</label>
           <div className="blogEditor">
-            <CKEditor
-              editor={ClassicEditor}
-              data={content}
+            <ReactQuill
+              value={formData.desc}
               onChange={handleContentChange}
+              modules={{
+                toolbar: {
+                  container: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                    [
+                      { list: 'ordered' },
+                      { list: 'bullet' },
+                      { indent: '-1' },
+                      { indent: '+1' },
+                    ],
+                    ['link', 'image'],
+                    ['clean'],
+                  ],
+                },
+              }}
               required
             />
           </div>
         </div>
-        <button type="submit" disabled={publishing}>
-          {publishing ? 'Publishing...' : 'Publish'}
-        </button>
+
+        <div className="form-actions">
+          <button type="submit" onClick={handleSubmit}>
+            Publish
+          </button>
+        </div>
       </form>
     </div>
   );
