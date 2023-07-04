@@ -4,6 +4,7 @@ import pic1 from '../images/gettyimages-1364964016.jpg';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { ScaleLoader } from 'react-spinners';
 
 function Contact() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -79,12 +80,13 @@ function Contact() {
                 <FiEye className="eye-icon" onClick={togglePasswordVisibility} />
               )}
             </div>
-
-            <input
-              type="submit"
-              value={isRegistering ? 'Logging In...' : 'SIGN IN'}
-              disabled={isRegistering}
-            />
+            <div className="submit-container">
+              {!isRegistering ? (
+                <input type="submit" value="Sign In" />
+              ) : (
+                <ScaleLoader color="#1f2328" loading={true} height={35} width={4} radius={2} margin={2} style={{alignItems:'center', display:'flex', justifyContent:'center'}} />
+              )}
+            </div>
           </form>
           <div className="already">
             {/* <h4>

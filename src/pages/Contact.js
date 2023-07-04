@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone} from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { ScaleLoader } from 'react-spinners';
 
 function Contact() {
   const form = useRef();
@@ -180,7 +181,13 @@ function Contact() {
             <textarea id="message" name="message" onChange={handleMessageChange} required></textarea>
             {errors.message && <p className="error">{errors.message}</p>}
 
-            <input type="submit" value={isSending ? 'Sending...' : 'Send'} disabled={isSending} />
+            <div className="submit-container">
+              {!isSending ? (
+                <input type="submit" value="Send" />
+              ) : (
+                <ScaleLoader color="#1f2328" loading={true} height={35} width={4} radius={2} margin={2} style={{alignItems:'center', display:'flex', justifyContent:'center'}} />
+              )}
+            </div>
         </form>
         <div>
         <iframe 
