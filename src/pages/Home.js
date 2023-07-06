@@ -25,6 +25,7 @@ const Home = () => {
   // }, []);
 
   return (
+    <body>
     <div>
 
     <div className="home">
@@ -37,7 +38,7 @@ const Home = () => {
     </div>
 
     <div className="home1">
-      <h4>We're your business <br/> Clearing partners.</h4>
+      <h4>We're your business < br /> Clearing partners.</h4>
       <div className="homeabout">
         <p> EFORIA Ltd is a Freight Forwarding and Clearing company here in Rwanda.
             We are in charge of giving a good service to clients that want to import or export goods.
@@ -123,6 +124,7 @@ const Home = () => {
         )}
       </div> */}
     </div>
+    </body>
   )
 }
 
