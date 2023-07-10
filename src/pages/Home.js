@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import pic2 from '../images/image-1.jpg'
-import pic3 from '../images/consulting-abstract-concept-vector-illustration_107173-24712.jpg'
 
 const Home = () => {
 
@@ -56,7 +54,7 @@ const Home = () => {
       <div className="work-list">
 
         <div className="work">
-          <img src= {pic2} alt="Freight Forwarding" />
+          <img src= "https://img.freepik.com/free-photo/large-cargo-ship-with-containers-generative-ai_188544-8160.jpg?t=st=1688753900~exp=1688757500~hmac=ec49a38e115f8dbf1009e3724b8df7ea2a3661cd52230119dd39c4f52e6b2c70&w=2000" alt="Freight Forwarding" />
           <div className="layer">
             <h2>Freight Forwarding</h2>
             <p>Short ribs fatback kevin spare ribs biltong pig bacon corned beef kielbasa porchetta</p>
@@ -64,7 +62,7 @@ const Home = () => {
         </div>
 
         <div className="work">
-          <img src={pic3} alt="Clearing Taxes" />
+          <img src="https://img.freepik.com/premium-photo/man-is-working-calculator-with-pen-plant-table_914455-44.jpg?w=1380" alt="Clearing Taxes" />
           <div className="layer">
             <h2>Clearing Taxes</h2>
             <p>Short ribs fatback kevin spare ribs biltong pig bacon corned beef kielbasa porchetta</p>
@@ -72,7 +70,7 @@ const Home = () => {
         </div>
 
         <div className="work">
-          <img src={pic2} alt="French Dessert" />
+          <img src="https://img.freepik.com/free-photo/two-hands-shaking-with-pen-pen-desk_1340-31626.jpg?t=st=1688753642~exp=1688757242~hmac=76883b1e51430a5077944afe508b5b7d9a23a443394ae4cfa1faaefbbedc4e14&w=2000" alt="French Dessert" />
           <div className="layer">
             <h2>Business Advisor</h2>
             <p>Short ribs fatback kevin spare ribs biltong pig bacon corned beef kielbasa porchetta</p>

@@ -85,7 +85,7 @@ function Contact() {
     <body>
       <div className="Register">
         <div className="Rinfo">
-          <h1>Change Password at BENO</h1>
+          <h1>Change Password </h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="oldPassword"> Current Password:</label>
             <div className="password-input">
